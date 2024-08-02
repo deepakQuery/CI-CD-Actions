@@ -1,23 +1,29 @@
 name: Laravel
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         environment: [dev, test, prod]
+
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
+
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
     - name: Set environment specific .env variables
       run: |
         if [ "${{ matrix.environment }}" == "dev" ]; then
@@ -30,6 +36,9 @@ jobs:
           echo "APP_ENV=production" >> .env
           echo "DB_DATABASE=database_prod.sqlite" >> .env
         fi
+
+    - name: Remove existing vendor directory
+      run: rm -rf vendor
 
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
