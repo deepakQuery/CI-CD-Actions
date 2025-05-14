@@ -30,7 +30,7 @@ jobs:
       run: echo "this is my build"
   test:
     runs-on: "ubuntu-latest"
-    name: Test
+    name: build
     needs:
     - scan
     steps:
@@ -41,7 +41,7 @@ jobs:
   scan:
   
     runs-on: "ubuntu-latest"
-    name: Scan
+    name: test
     needs:
      - init
     steps:
@@ -59,7 +59,7 @@ jobs:
       
   dev:
     runs-on: ubuntu-latest
-    needs: Unittest
+    needs: scan
     steps:
       - name: Print message
         run: echo "Hello, DEV environment"
