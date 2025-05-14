@@ -1,0 +1,11 @@
+name: Manual PROD Deployment
+
+on:
+  workflow_dispatch:  # This makes the workflow manually triggered
+
+jobs:
+  prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to PROD
+        run: echo "Deploying to PROD manually"
