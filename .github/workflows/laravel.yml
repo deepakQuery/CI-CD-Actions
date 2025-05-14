@@ -6,9 +6,7 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
-
   init:
     runs-on: "ubuntu-latest"
     name: Init
@@ -32,18 +30,17 @@ jobs:
     runs-on: "ubuntu-latest"
     name: build
     needs:
-    - scan
+    - build
     steps:
      - name: Unit Test
        run: echo "this is my build"
 
 
   scan:
-  
     runs-on: "ubuntu-latest"
     name: test
     needs:
-     - init
+     - test
     steps:
      - name: Sonar Scan
        run: echo "this is my build"
@@ -52,14 +49,14 @@ jobs:
 
   Unittest:
     runs-on: ubuntu-latest
-    needs: test
+    needs: scan
     steps:
      - name: Print message
        run: echo "Hello, TEST environment"
       
   dev:
     runs-on: ubuntu-latest
-    needs: scan
+    needs: Unittest
     steps:
       - name: Print message
         run: echo "Hello, DEV environment"
