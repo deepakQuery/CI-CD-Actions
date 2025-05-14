@@ -31,19 +31,20 @@ jobs:
        run: echo "this is my build"
      - name: Trivy Scan
        run: echo "this is my build"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: dev
+    steps:
+     - name: Print message
+       run: echo "Hello, TEST environment"
+      
   dev:
     runs-on: ubuntu-latest
     needs: init
     steps:
       - name: Print message
         run: echo "Hello, DEV environment"
-
-  test:
-    runs-on: ubuntu-latest
-    needs: dev
-    steps:
-      - name: Print message
-        run: echo "Hello, TEST environment"
 
   prod:
     runs-on: ubuntu-latest
