@@ -28,11 +28,9 @@ jobs:
      - init
     steps:
      - name: Sonar Scan
-       run: |
-        echo: "this is my build"
+       run: echo "this is my build"
      - name: Trivy Scan
-       run: |
-        echo "this is my build"
+       run: echo "this is my build"
   dev:
     runs-on: ubuntu-latest
     needs: init
