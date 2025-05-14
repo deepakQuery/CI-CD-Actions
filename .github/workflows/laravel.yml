@@ -51,14 +51,14 @@ jobs:
 
   Unittest:
     runs-on: ubuntu-latest
-    needs: scan
+    needs: init
     steps:
      - name: Print message
        run: echo "Hello, TEST environment"
       
   dev:
     runs-on: ubuntu-latest
-    needs: test
+    needs: Unittest
     steps:
       - name: Print message
         run: echo "Hello, DEV environment"
