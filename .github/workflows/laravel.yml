@@ -1,5 +1,4 @@
 name: Simple Environment Pipeline
-
 on:
   push:
     branches:
