@@ -39,6 +39,7 @@ jobs:
 
 
   scan:
+  
     runs-on: "ubuntu-latest"
     name: Scan
     needs:
