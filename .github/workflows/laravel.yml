@@ -8,6 +8,12 @@ on:
       - main
 
 jobs:
+
+  Init:
+    runs-on: ubuntu-latest
+    steps:
+      -name: Init 
+       run: echo "Hello world"
   dev:
     runs-on: ubuntu-latest
     steps:
