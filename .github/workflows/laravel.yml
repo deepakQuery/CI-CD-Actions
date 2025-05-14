@@ -1,0 +1,29 @@
+name: Simple Environment Pipeline
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print message
+        run: echo "Hello, DEV environment"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: dev
+    steps:
+      - name: Print message
+        run: echo "Hello, TEST environment"
+
+  prod:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Print message
+        run: echo "Hello, PROD environment"
